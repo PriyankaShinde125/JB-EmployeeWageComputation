@@ -25,7 +25,6 @@ public class EmployeeWageBuilder {
                 default:
                     break;
             }
-            totalWage = totalWorkingHours * WAGE_PER_HOUR;
             if (totalWorkingDays == MAX_WORKING_DAYS)
                 break;
             else
@@ -33,7 +32,9 @@ public class EmployeeWageBuilder {
             if (totalWorkingHours == MAX_WORKING_HOURS)
                 break;
         }
-
+        System.out.println("Total working days : "+totalWorkingDays);
+        System.out.println("Total working hours : "+totalWorkingHours);
+        totalWage = totalWorkingHours * WAGE_PER_HOUR;
         System.out.println("Total wage  = " + totalWage);
     }
 }
