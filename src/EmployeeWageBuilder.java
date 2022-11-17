@@ -6,23 +6,26 @@ public class EmployeeWageBuilder {
         int FULL_DAY_HOURS = 8;
         int PART_TIME_HOURS = 4;
         int WAGE_PER_HOUR = 20;
+        int MONTHLY_WORKING_DAYS = 20;
 
         int workingHours = 0;
-        int attendance = (int) Math.floor(Math.random() * 3);
-        switch (attendance) {
-            case IS_FULL_TIME_PRESENT:
-                System.out.println("Employee is full-time present");
-                workingHours = workingHours + FULL_DAY_HOURS;
-                break;
-            case IS_PART_TIME_PRESENT:
-                System.out.println("Employee is part-time present");
-                workingHours = workingHours + PART_TIME_HOURS;
-                break;
-            default:
-                System.out.println("Employee is absent");
-                break;
+        int monthlyWage = 0;
+        for (int i = 0; i < MONTHLY_WORKING_DAYS; i++) {
+            int attendance = (int) Math.floor(Math.random() * 3);
+            switch (attendance) {
+                case IS_FULL_TIME_PRESENT:
+                    workingHours = FULL_DAY_HOURS;
+                    break;
+                case IS_PART_TIME_PRESENT:
+                    workingHours = PART_TIME_HOURS;
+                    break;
+                default:
+                    workingHours = 0;
+                    break;
+            }
+            int dailyWage = workingHours * WAGE_PER_HOUR;
+            monthlyWage = monthlyWage + dailyWage;
         }
-        int dailyWage = workingHours * WAGE_PER_HOUR;
-        System.out.println("Today's Wage = " + dailyWage);
+        System.out.println("Total wage for this month = " + monthlyWage);
     }
 }
